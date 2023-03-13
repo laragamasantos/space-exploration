@@ -1,5 +1,4 @@
 // Faça o exercício da GALERIA de IMAGENS neste arquivo
-// Este arquivo AINDA NÃO está incluído no arquivo HTML
 
 // caminho para onde as imagens estão hospedadas
 const servidorDasImagens = 'https://fegemo.github.io/cefet-front-end/images/',
@@ -17,6 +16,25 @@ const servidorDasImagens = 'https://fegemo.github.io/cefet-front-end/images/',
 let indiceDaFotoAtual = 0;
 
 // ...COMECE a implementar aqui <--------------------------------------------
+function mudarImg(sentido){
+  indiceDaFotoAtual += sentido;
+  if(indiceDaFotoAtual === -1){ //imagens em carrossel
+    indiceDaFotoAtual = 4
+  } else if(indiceDaFotoAtual === 5){
+    indiceDaFotoAtual = 0;
+  }
+  let img = document.querySelector('#slide');
+  img.src = servidorDasImagens + nomesDasImagens[indiceDaFotoAtual]; //altera imagem
+}
+
+let btnProximo = document.querySelector('#proximo');
+let btnAnterior = document.querySelector('#anterior');
+
+btnProximo.addEventListener('click', function(){
+  mudarImg(1)});
+btnAnterior.addEventListener('click', function(){
+  mudarImg(-1)});
+
 
 
 
